@@ -15,11 +15,11 @@
                 <input id="to" name="to" type="date" (change)="changeTo();" [formControl]="dateTo">
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-8 mt-10">
                 <button (click)="search();" class="btn btn-primary">Search for pics of the day</button>
             </div>
-        </div>
+        </div> -->
     </form>
     <ul class="row">
         <li class="col-sm-4" *ngFor="let pic of pics()">

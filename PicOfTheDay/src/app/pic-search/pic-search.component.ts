@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, effect, inject, signal } from '@angular/core';
 import { PicOfDayService } from '../pic-of-day-service.service';
 import { PicType } from '../pics.model';
 import { FormControl } from '@angular/forms';
@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './pic-search.component.html',
   styleUrls: ['./pic-search.component.css']
 })
-export class PicSearchComponent {
+export class PicSearchComponent implements OnInit {
   private picOfDayService = inject(PicOfDayService);
 
   from = signal('2023-08-20'); // writable signal of string
@@ -23,9 +23,13 @@ export class PicSearchComponent {
   constructor() {
     effect(() => { // Subscription to signals
       console.log(`dateRange: ${this.dateRange()}`);
-      this.search();
+      setTimeout(() => {
+        this.search();
+      }, 1000);
     })
 
+  }
+  ngOnInit(): void {
     this.dateFrom.setValue(this.from());
     this.dateTo.setValue(this.to());
   }
@@ -35,7 +39,7 @@ export class PicSearchComponent {
   }
 
   changeTo() {
-    this.dateTo.value ? this.from.set(this.dateTo.value) : null;
+    this.dateTo.value ? this.to.set(this.dateTo.value) : null;
   }
 
   async search(): Promise<void> {

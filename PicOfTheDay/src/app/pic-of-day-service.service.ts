@@ -9,7 +9,7 @@ import { PicType } from './pics.model';
 export class PicOfDayService {
 
   private apiUrl: string = 'https://api.nasa.gov/planetary/apod';
-  private key: string = 'DEMO_KEY';
+  private key: string = 'YbbMNWeWX2BqxoPKXEiWWcKMgNlUHhHXgqWG5XBt';
 
   constructor(private http: HttpClient) { }
 
