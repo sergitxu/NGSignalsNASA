@@ -1,0 +1,11 @@
+<p>{{this.dateRange()}}</p>
+
+
+<button (click)="search();">Search for pics of the day</button>
+
+
+<ul>
+    <li *ngFor="let pic of pics()">
+        <p>{{pic.title}}</p>
+    </li>
+</ul>
