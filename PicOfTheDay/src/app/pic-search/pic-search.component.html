@@ -1,11 +1,34 @@
-<p>{{this.dateRange()}}</p>
-
-
-<button (click)="search();">Search for pics of the day</button>
-
-
-<ul>
-    <li *ngFor="let pic of pics()">
-        <p>{{pic.title}}</p>
-    </li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <p class="bold">{{this.dateRange()}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <label for="from">Get pictures from:</label>
+            <input id="from" name="from" type="text" (input)="changeFrom('2023-08-25');">
+        </div>
+        <div class="col-sm-6">
+            <label for="to">Get pictures until:</label>
+            <input id="to" name="to" type="text" (input)="changeTo('2023-08-26');">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 mt-10">
+            <button (click)="search();" class="btn btn-primary">Search for pics of the day</button>
+        </div>
+    </div>
+    <ul class="row">
+        <li class="col-sm-4" *ngFor="let pic of pics()">
+            <div class="panel">
+                <div class="panel-body">
+                    <img src="{{pic.url}}" alt="{{pic.title}}">
+                    <p>{{pic.title}}</p>
+                    <!-- <p>{{pic.explanation}}</p> -->
+                    <p>{{pic.date}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

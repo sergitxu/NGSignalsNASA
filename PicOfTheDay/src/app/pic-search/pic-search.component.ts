@@ -10,7 +10,7 @@ import { PicType } from '../pics.model';
 export class PicSearchComponent {
   private picOfDayService = inject(PicOfDayService);
 
-  from = signal('2023-07-28'); // writable signal of string
+  from = signal('2023-08-20'); // writable signal of string
   to = signal('2023-08-27');
   pics = signal<PicType[]>([]);
 
@@ -19,12 +19,20 @@ export class PicSearchComponent {
   constructor() {
     effect(() => { // Subscription to signals
       console.log(`dateRange: ${this.dateRange()}`);
+      this.search();
     })
+  }
+
+  changeFrom(date: string) {
+    this.from.set(date);
+  }
+
+  changeTo(date: string) {
+    this.to.set(date);
   }
 
   async search(): Promise<void> {
     if (!this.from() || !this.to()) {
-      console.log('NO');
       return;
     }
 
@@ -33,15 +41,12 @@ export class PicSearchComponent {
 
       if (pics) {
         this.pics.set(pics);
-        console.log(this.pics);
 
       } else {
-        // Handle the case where the response is undefined
         console.log('No pictures found.');
       }
     } catch (error) {
       console.error('Error fetching pictures:', error);
-      // Handle the error as needed
     }
   }
 
