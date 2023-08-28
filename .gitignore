@@ -1,15 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+PicOfTheDay/dist
+PicOfTheDay/tmp
+PicOfTheDay/out-tsc
+PicOfTheDay/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+PicOfTheDay/node_modules
+PicOfTheDay/npm-debug.log
+PicOfTheDay/yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -29,13 +29,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+PicOfTheDay/.angular/cache
+PicOfTheDay/.sass-cache/
+PicOfTheDay/connect.lock
+PicOfTheDay/coverage
+PicOfTheDay/libpeerconnection.log
+PicOfTheDay/testem.log
+PicOfTheDay/typings
 
 # System files
 .DS_Store

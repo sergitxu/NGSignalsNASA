@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { PicOfDayService } from '../pic-of-day-service.service';
 import { PicType } from '../pics.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-pic-search',
@@ -16,19 +17,25 @@ export class PicSearchComponent {
 
   dateRange = computed(() => `Images from ${this.from()}, to ${this.to()}`); // computed signal, not writable
 
+  dateFrom = new FormControl('');
+  dateTo = new FormControl('');
+
   constructor() {
     effect(() => { // Subscription to signals
       console.log(`dateRange: ${this.dateRange()}`);
       this.search();
     })
+
+    this.dateFrom.setValue(this.from());
+    this.dateTo.setValue(this.to());
   }
 
-  changeFrom(date: string) {
-    this.from.set(date);
+  changeFrom() {
+    this.dateFrom.value ? this.from.set(this.dateFrom.value) : null;
   }
 
-  changeTo(date: string) {
-    this.to.set(date);
+  changeTo() {
+    this.dateTo.value ? this.from.set(this.dateTo.value) : null;
   }
 
   async search(): Promise<void> {

@@ -1,24 +1,26 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <p class="bold">{{this.dateRange()}}</p>
+    <form>
+        <div class="row">
+            <div class="col-sm-8">
+                <p class="bold">{{this.dateRange()}}</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <label for="from">Get pictures from:</label>
-            <input id="from" name="from" type="text" (input)="changeFrom('2023-08-25');">
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="from">Get pictures from:</label>
+                <input id="from" name="from" type="date" (change)="changeFrom();" [formControl]="dateFrom">
+            </div>
+            <div class="col-sm-6">
+                <label for="to">Get pictures until:</label>
+                <input id="to" name="to" type="date" (change)="changeTo();" [formControl]="dateTo">
+            </div>
         </div>
-        <div class="col-sm-6">
-            <label for="to">Get pictures until:</label>
-            <input id="to" name="to" type="text" (input)="changeTo('2023-08-26');">
+        <div class="row">
+            <div class="col-sm-8 mt-10">
+                <button (click)="search();" class="btn btn-primary">Search for pics of the day</button>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 mt-10">
-            <button (click)="search();" class="btn btn-primary">Search for pics of the day</button>
-        </div>
-    </div>
+    </form>
     <ul class="row">
         <li class="col-sm-4" *ngFor="let pic of pics()">
             <div class="panel">
