@@ -11,27 +11,29 @@ import { FormControl } from '@angular/forms';
 export class PicSearchComponent implements OnInit {
   private picOfDayService = inject(PicOfDayService);
 
-  from = signal('2023-08-20'); // writable signal of string
-  to = signal('2023-08-27');
-  pics = signal<PicType[]>([]);
+  currentDate = new Date().toJSON().slice(0, 10);
+  CUSTOMDATEFROM = '2023-09-01'
 
-  dateRange = computed(() => `Images from ${this.from()}, to ${this.to()}`); // computed signal, not writable
+  from = signal(this.CUSTOMDATEFROM); // writable SIGNAL of string
+  to = signal(this.currentDate); // writable SIGNAL of string
+  pics = signal<PicType[]>([]); // writable SIGNAL of array
+
+  dateRange = computed(() => `Images from ${this.from()}, to ${this.to()}`); // COMPUTED SIGNAL, not writable
 
   dateFrom = new FormControl('');
   dateTo = new FormControl('');
 
   constructor() {
-    effect(() => { // Subscription to signals
-      console.log(`dateRange: ${this.dateRange()}`);
-      setTimeout(() => {
-        this.search();
-      }, 1000);
+    effect(() => { // EFFECT Subscription to signals
+      // console.log(`dateRange: ${this.dateRange()}`);
+      // setTimeout(() => {
+      this.search();
+      // }, 500);
     })
-
   }
   ngOnInit(): void {
-    this.dateFrom.setValue(this.from());
-    this.dateTo.setValue(this.to());
+    this.dateFrom.setValue(this.CUSTOMDATEFROM);
+    this.dateTo.setValue(this.currentDate);
   }
 
   changeFrom() {
