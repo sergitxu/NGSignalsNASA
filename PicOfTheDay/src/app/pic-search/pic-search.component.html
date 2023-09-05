@@ -1,36 +1,41 @@
-<div class="container">
-    <form>
-        <div class="row">
-            <div class="col-sm-8">
-                <p class="bold">{{this.dateRange()}}</p>
-            </div>
+<div class="row">
+    <div class="col-sm-8">
+        <p class="bold">Showing pictures in this range: {{this.dateRange()}}</p>
+    </div>
+</div>
+<form>
+    <div class="row">
+        <div class="col-sm-8">
+            <p>Select a range to see pics of those days.</p>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <label for="from">Get pictures from:</label>
-                <input id="from" name="from" type="date" (change)="changeFrom();" [formControl]="dateFrom">
-            </div>
-            <div class="col-sm-6">
-                <label for="to">Get pictures until:</label>
-                <input id="to" name="to" type="date" (change)="changeTo();" [formControl]="dateTo">
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <label for="from">Get pictures from:</label>
+            <input id="from" name="from" type="date" (change)="changeFrom();" [formControl]="dateFrom">
         </div>
-        <!-- <div class="row">
+    </div>
+    <div class="row mt-12">
+        <div class="col-sm-6">
+            <label for="to">Get pictures until:</label>
+            <input id="to" name="to" type="date" (change)="changeTo();" [formControl]="dateTo">
+        </div>
+    </div>
+    <!-- <div class="row">
             <div class="col-sm-8 mt-10">
                 <button (click)="search();" class="btn btn-primary">Search for pics of the day</button>
             </div>
         </div> -->
-    </form>
-    <ul class="row mt-24">
-        <li class="col-sm-4" *ngFor="let pic of pics()">
-            <div class="panel">
-                <div class="panel-body">
-                    <img src="{{pic.url}}" alt="{{pic.title}}">
-                    <p>{{pic.title}}</p>
-                    <!-- <p>{{pic.explanation}}</p> -->
-                    <p>{{pic.date}}</p>
-                </div>
+</form>
+<ul class="row mt-24">
+    <li class="col-sm-4" *ngFor="let pic of pics()">
+        <div class="panel">
+            <div class="panel-body">
+                <img src="{{pic.url}}" alt="{{pic.title}}">
+                <p>{{pic.title}}</p>
+                <!-- <p>{{pic.explanation}}</p> -->
+                <p>{{pic.date}}</p>
             </div>
-        </li>
-    </ul>
-</div>
+        </div>
+    </li>
+</ul>
