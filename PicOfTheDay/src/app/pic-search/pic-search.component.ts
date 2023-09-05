@@ -25,10 +25,7 @@ export class PicSearchComponent implements OnInit {
 
   constructor() {
     effect(() => { // EFFECT Subscription to signals
-      // console.log(`dateRange: ${this.dateRange()}`);
-      // setTimeout(() => {
       this.search();
-      // }, 500);
     })
   }
   ngOnInit(): void {
@@ -37,11 +34,15 @@ export class PicSearchComponent implements OnInit {
   }
 
   changeFrom() {
-    this.dateFrom.value ? this.from.set(this.dateFrom.value) : null;
+    setTimeout(() => {
+      this.dateFrom.value ? this.from.set(this.dateFrom.value) : null;
+    }, 800);
   }
 
   changeTo() {
-    this.dateTo.value ? this.to.set(this.dateTo.value) : null;
+    setTimeout(() => {
+      this.dateTo.value ? this.to.set(this.dateTo.value) : null;
+    }, 800);
   }
 
   async search(): Promise<void> {
@@ -50,10 +51,10 @@ export class PicSearchComponent implements OnInit {
     }
 
     try {
-      const pics = await this.picOfDayService.findPicsInRange(this.from(), this.to()).toPromise();
+      let NASApics = await this.picOfDayService.findPicsInRange(this.from(), this.to()).toPromise();
 
-      if (pics) {
-        this.pics.set(pics);
+      if (NASApics) {
+        this.pics.set(NASApics);
 
       } else {
         console.log('No pictures found.');
